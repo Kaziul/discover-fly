@@ -8,28 +8,29 @@ function personHandler(person, increase) {
     totalPerson = newPerson - 1;
   }
   document.getElementById(person + "-person").value = totalPerson;
-  const inputPersonFirst = getInputValue("first");
-  const inputPersonSecond = getInputValue("second");
-  const allPerson = inputPersonFirst * 150 + inputPersonSecond * 100;
+  const allPerson = getInputTotalValue();
   document.getElementById("total-amount").innerText = "$" + allPerson;
   calculateTotal();
 }
-
 function calculateTotal() {
-  const inputPersonFirst = getInputValue("first");
-  const inputPersonSecond = getInputValue("second");
-  const allPerson = inputPersonFirst * 150 + inputPersonSecond * 100;
+  const allPerson = getInputTotalValue();
   const totalVat = allPerson * 0.1;
   document.getElementById("total-vat").innerText = "$" + totalVat;
   const grandAmount = allPerson + totalVat;
   document.getElementById("grand-amount").innerText = "$" + grandAmount;
 }
-
+function getInputTotalValue() {
+  const inputPersonFirst = getInputValue("first");
+  const inputPersonSecond = getInputValue("second");
+  const allPerson = inputPersonFirst * 150 + inputPersonSecond * 100;
+  return allPerson;
+}
 function getInputValue(person) {
   const productInput = document.getElementById(person + "-person");
   const productCount = parseInt(productInput.value);
   return productCount;
 }
+
 
 
 
